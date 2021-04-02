@@ -1,0 +1,6 @@
+a = bool(input('Введите A = '))
+b = bool(input('Введите B = '))
+c = bool(input('Введите C = '))
+print(a, b ,c)
+res = not (a & (not b)) or (a or (not c))
+print(f'{a}, {b}, {c} --> {res}')
