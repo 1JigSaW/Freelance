@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card edit">
+  <header class="card-header">
+    <p class="card-header-title">Author</p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      <form method="POST">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input type="text" class="input" name="name" value="{{ name | default('')}}">
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <input type="submit" class="button is-link" value="Submit">
+          </div>
+          <div class="control">
+            <a class="button is-text" href="{{ url_for('authors') }}">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

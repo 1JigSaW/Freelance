@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Browse{% endblock %}
+
+{% block content %}
+    <nav>
+	    {% for category in categories %}
+	      <p><a href="{{url_for('category', category=category.name)}}">{{ category.name }}</a></p>
+	    {% endfor %}
+  	</nav>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Category: {{ category }}{% endblock %}
+
+{% block content %}
+	{% for categ in categories2 %}
+		{% if categ.name == category %}
+			<p>{{ categ.description }}</p>
+			<h4>TOP-3 books:</h4>
+	     		<p><a href="{{ url_for('book', category=categ.name, book=categ.book1) }}">{{ categ.book1 }}</a></p>
+	     		<p><a href="{{ url_for('book', category=categ.name, book=categ.book2) }}">{{ categ.book2 }}</a></p>
+	     		<p><a href="{{ url_for('book', category=categ.name, book=categ.book3) }}">{{ categ.book3 }}</a></p>
+	     {% endif %}
+	{% endfor %}
+{% endblock %}
