@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>All news</h3>
+	{% for post in all_posts_time %}
+	   <p><b>{{ post.title }}</b></p>
+	   <p><i>{{ post.author }}</i></p>
+	   <p><i>{{ post.timestamp }}</i></p>
+	   <p><i>{{ post.tags }}</i></p>
+	   <p>{{ post.body }}</p>
+	{% endfor %}
+
+{% endblock %}
