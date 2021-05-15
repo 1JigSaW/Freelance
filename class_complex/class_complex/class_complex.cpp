@@ -35,23 +35,23 @@ public:
         return Complex(re + other, im);
     }
 
-    Complex operator *(Complex other) {
+    Complex operator *(Complex other) const {
         return Complex(re * other.re - im * other.im,
             re * other.im + im * other.re);
     }
-    Complex operator *(double other) {
+    Complex operator *(double other) const {
         return Complex(re * other, im * other);
     }
 
-    Complex operator /(Complex other) {
+    Complex operator /(Complex other) const {
         return (*this * Complex(other.re, -other.im)) /
             (other.re * other.re + other.im * other.im);
     }
-    Complex operator /(double other) {
+    Complex operator /(double other) const {
         return Complex(re / other, im / other);
     }
 
-    double abs() const {
+    double Abs() const {
         return sqrt(re * re + im * im);
     }
 

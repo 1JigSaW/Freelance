@@ -51,3 +51,12 @@ public:
     }
 };
 
+int main() {
+    SearchTree tree(5);
+    for (int i = 0; i <= 10; ++i) {
+        tree.Insert(i);
+    }
+
+    tree.Print();
+    std::cout << "\n";
+}
