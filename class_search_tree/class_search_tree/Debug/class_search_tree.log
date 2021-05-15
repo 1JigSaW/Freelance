@@ -1,0 +1,21 @@
+﻿  class_search_tree.cpp
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(26,1): error C2440: =: невозможно преобразовать "SearchTree *" в "std::shared_ptr<SearchTree> *"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(26,39): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(27,24): error C2039: "parent_": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(28,1): error C2440: return: невозможно преобразовать "std::shared_ptr<SearchTree> *" в "SearchTree *"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(28,24): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(31,27): error C2039: "Insert": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(35,1): error C2440: =: невозможно преобразовать "SearchTree *" в "std::shared_ptr<SearchTree> *"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(35,36): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(36,21): error C2039: "parent_": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(37,1): error C2440: return: невозможно преобразовать "std::shared_ptr<SearchTree> *" в "SearchTree *"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(37,20): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(40,24): error C2039: "Insert": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(45,20): error C2039: "Print": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(49,21): error C2039: "Print": не является членом "std::shared_ptr<SearchTree>".
+D:\Freelance\class_search_tree\class_search_tree\class_search_tree.cpp(9): message : см. объявление "std::shared_ptr<SearchTree>"

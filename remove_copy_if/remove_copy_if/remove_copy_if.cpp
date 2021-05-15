@@ -9,7 +9,7 @@ OutIter RemoveCopyIf(InIter first, InIter last, OutIter out, Predicate f) {
         }
         ++first;
     }
-    return result;
+    return out;
 };
 
 
