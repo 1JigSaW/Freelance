@@ -9,6 +9,9 @@ count = 0
 for dim in matr:
 	for num in dim:
 		if len(str(num)) == K:
-			if num % R == 0:
+			summ = 0
+			for i in str(num):
+				summ += int(i)
+			if summ % R == 0:
 				count += 1
 print(count)
