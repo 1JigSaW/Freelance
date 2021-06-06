@@ -1,37 +1,28 @@
-nm_lst = list(map(int, input().strip().split()))
-n = nm_lst[0]
-m = nm_lst[1]
-
-edg = [0] * n
-comp = [0] * n
-was = [0] * n
-for i in range(n):
-        edg[i] = []
-        comp[i] = []
+from sys import stdin
+input = stdin.readline
+sys.setrecursionlimit(100)
+n, m = map(int, input().split())
+G = [[] for i in range(n + 1)]
 
 for i in range(m):
-        tmp_list = list(map(int, input().strip().split()))
-        u = tmp_list[0] - 1
-        v = tmp_list[1] - 1
-        edg[u].append(v)
-        edg[v].append(u)
+    s = input()
+    l = s.split()
+    G[int(l[0])].append(int(l[1]))
+    G[int(l[1])].append(int(l[0]))
+a = [0 for i in range(n + 1)]
 
-res = 0
+def f(i, com):
+    if a[i] == 0:
+        a[i] = 1
+        for j in G[i]:
+            com += f(j, [])
+        com.append(i)
+    return com
 
-def dfs(v):
-        was[v] = 1
-        comp[res - 1].append(str(v + 1))
-        for i in edg[v]:
-                if was[i] == 0:
-                        dfs(i)
-
-for i in range(n):
-        if was[i] == 0:
-                res += 1
-                dfs(i)
-
-
-print(res)
-for i in range(res):
-    print(str(len(comp[i])))
-    print(" ".join(comp[i]))
+list_of_com = list()
+for  i in range(1, n + 1):
+    list_of_com.append(f(i, list()))
+    if list_of_com[-1] == []:
+        list_of_com.pop(-1)
+print(len(list_of_com))
+print(' '.join(list(map(str, sorted(list_of_com[i])))))
