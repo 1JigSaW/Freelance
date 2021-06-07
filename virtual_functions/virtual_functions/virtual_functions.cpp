@@ -3,51 +3,52 @@
 
 #include <iostream>
 
+
 class Array
 {
 public:
-    static const int s = 15;
-    unsigned char a[s];
-    int element;
-
-    Array(unsigned char* s, int f = 0) {
-        element = f;
-        for (int i = 0; i < f; i++) {
-            a[i] = s[i];
+    static const size_t max_size = 100;
+    int data[max_size];
+    size_t size;
+    Array() : size(0) { }
+    Array(size_t _size, int value = 0) :size(_size)
+    {
+        if (_size > max_size)
+        {
+            std::cout << "Size is bigger than max_size\n";
+            exit(1);
         }
-    };
-    Array() = default;
-
-    unsigned char operator [] (int d) {
-        if (d >= element || d < 0) {
-            std::cout << "error";
-            return 0;
+        for (int i = 0; i < size; i++)
+        {
+            this->data[i] = value;
         }
-        return a[d];
     }
-    virtual void summ(const Array& y) {
+
+    virtual void slozhenie(const Array& y) {
         int k = 0;
-        for (int i = 0; i < element; i++) {
-            a[i] = a[i] + y.a[i] - '0' + k;
+        for (int i = 0; i < size; i++) {
+            data[i] = data[i] + y.data[i] - '0' + k;
             k = 0;
-            if (a[i] > '9') {
+            if (data[i] > '9') {
                 k++;
-                a[i] = a[i] - 10;
+                data[i] = data[i] - 10;
             }
         }
-        if (k == 1) a[element] = '1';
+        if (k == 1) data[size] = '1';
     }
 };
+
+
 
 class Fraction : public Array
 {
 private:
-    int sign;
+    int sign_;
     float num;
     float den;
 
 public:
-    Fraction(float top, float bottom, int sign_) {
+    Fraction(float top, float bottom, int sign) {
         sign_ = sign;
         num = top;
         den = bottom;
@@ -75,17 +76,17 @@ public:
         }
     }
 
-    virtual void summ(const Array& y) override {
+    virtual void slozhenie(const Array& y) override {
         int k = 0;
-        for (int i = 0; i < element; i++) {
-            a[i] = a[i] + y.a[i] - '0' + k;
+        for (int i = 0; i < size; i++) {
+            data[i] = data[i] + y.data[i] - '0' + k;
             k = 0;
-            if (a[i] > '9') {
+            if (data[i] > '9') {
                 k++;
-                a[i] = a[i] - 10;
+                data[i] = data[i] - 10;
             }
         }
-        if (k == 1) a[element] = '1';
+        if (k == 1) data[size] = '1';
     }
 
 
@@ -106,17 +107,20 @@ public:
         str = new char[1];
     }
 
-    virtual void summ(const Array& y) override {
+    virtual void slozhenie(const Array& y) override {
         int k = 0;
-        for (int i = 0; i < element; i++) {
-            a[i] = a[i] + y.a[i] - '0' + k;
+        for (int i = 0; i < size; i++) {
+            data[i] = data[i] + y.data[i] - '0' + k;
             k = 0;
-            if (a[i] > '9') {
+            if (data[i] > '9') {
                 k++;
-                a[i] = a[i] - 10;
+                data[i] = data[i] - 10;
             }
         }
-        if (k == 1) a[element] = '1';
+        if (k == 1) data[size] = '1';
     }
 };
 
+int main() {
+
+}
