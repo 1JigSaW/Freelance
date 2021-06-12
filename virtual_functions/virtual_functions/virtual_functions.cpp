@@ -23,6 +23,15 @@ public:
             this->data[i] = value;
         }
     }
+    void print()
+    {
+        for (size_t i = 0; i < size; i++)
+        {
+            std::cout << data[i];
+        }
+        
+    }
+
 
     virtual void slozhenie(const Array& y) {
         int k = 0;
@@ -76,6 +85,15 @@ public:
         }
     }
 
+    void print()
+    {
+        for (size_t i = 0; i < size; i++)
+        {
+            std::cout << data[i];
+        }
+
+    }
+
     virtual void slozhenie(const Array& y) override {
         int k = 0;
         for (int i = 0; i < size; i++) {
@@ -119,8 +137,23 @@ public:
         }
         if (k == 1) data[size] = '1';
     }
+
+    void print()
+    {
+        for (size_t i = 0; i < size; i++)
+        {
+            std::cout << data[i];
+        }
+
+    }
 };
 
-int main() {
-
+int main()
+{
+    Array rray(10, 2);
+    rray.print();
+    rray.slozhenie(23);
+    std::cout << std::endl;
+    rray.print();
+    
 }
