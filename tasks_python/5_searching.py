@@ -1,0 +1,5 @@
+print('Введите строку: ')
+string = input().split(' ')
+print('Введите номер слова: ')
+num = int(input())
+print(string[num - 1])
