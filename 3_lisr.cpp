@@ -1,141 +1,133 @@
-#include <algorithm>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
 using namespace std;
 
-class Node {
+class List
+{
 private:
-    Node* prev;
-    int value;
-    Node* next;
-
+    int *el_1_ptr;
+    int *el_n_ptr;
+    int znach;
+    int *next_ptr;
 public:
-    Node(Node* prev_, Node* next_, int value_) : prev(prev_), next(next_), value(value_) {}
+    List()
+        : el_1_ptr (0),
+        el_n_ptr (0)
+    {}
 
-    Node() : prev(this), next(this) {}
-
-    void newPrev(Node* temp) { prev = temp; }
-    void newNext(Node* temp) { next = temp; }
-
-    Node* getPrev() { return prev; }
-    Node* getNext() { return next; }
-
-    int getValue() const { return value; }
-    int& getValue() { return value; }
-};
-
-class ListIterator {
-private:
-    Node* now;
-
-public:
-    ListIterator(Node* temp) : now(temp) {}
-
-    ListIterator& operator++() {
-        now = now->getNext();
-        return *this;
-    }
-
-    ListIterator& operator--() {
-        now = now->getPrev();
-        return *this;
-    }
-
-    ListIterator operator++(int) {
-        ListIterator temp(now);
-        now = now->getNext();
-        return temp;
-    }
-
-    ListIterator operator--(int) {
-        ListIterator temp(now);
-        now = now->getPrev();
-        return temp;
-    }
-
-    int operator*() const { return now->getValue(); }
-    int& operator*() { return now->getValue(); }
-
-    const Node* getAddress() const { return now; }
-};
-
-bool operator==(const ListIterator& one, const ListIterator& two) {
-    return (one.getAddress() == two.getAddress());
-}
-
-bool operator!=(const ListIterator& one, const ListIterator& two) {
-    return !(one == two);
-}
-
-class List {
-private:
-    Node* main;
-    size_t sz;
-
-    void Clear() {
-        Node* now = main->getNext();
-        while (now != main) {
-            Node* next = now->getNext();
-            delete now;
-            swap(now, next);
+    void insertAtFront (const int & value)
+    {
+        int *new_ptr = new_el(value);
+        
+        if ( isEmpty() )
+            el_1_ptr = el_n_ptr = new_ptr;
+        else
+        {
+            next_ptr = el_1_ptr;
+            el_1_ptr = new_ptr;
         }
-        sz = 0;
     }
 
-public:
-    List() : sz(0) { main = new Node(); }
+    void insertAtBack (const int & value)
+    {
+        int *new_ptr = new_el(value);
 
-    void push_front(int num) {
-        Node* temp = main->getNext();
-        Node* data = new Node(main, temp, num);
-        temp->newPrev(data);
-        main->newNext(data);
-        ++sz;
-    }
-
-    void push_back(int num) {
-        Node* temp = main->getPrev();
-        Node* data = new Node(temp, main, num);
-        temp->newNext(data);
-        main->newPrev(data);
-        ++sz;
-    }
-
-    void pop_front() {
-        Node* pop = main->getNext();
-        Node* newFront = pop->getNext();
-        newFront->newPrev(main);
-        main->newNext(newFront);
-        delete pop;
-        --sz;
-    }
-
-    void pop_back() {
-        Node* pop = main->getPrev();
-        Node* newFront = pop->getPrev();
-        newFront->newNext(main);
-        main->newPrev(newFront);
-        delete pop;
-        --sz;
-    }
-
-    size_t size() const { return sz; }
-
-    ListIterator begin() { return ListIterator(main->getNext()); }
-    ListIterator end() { return ListIterator(main); }
-    ListIterator begin() const { return ListIterator(main->getNext()); }
-    ListIterator end() const { return ListIterator(main); }
-
-    List& operator=(const List& other) {
-        this->Clear();
-        auto it = other.begin();
-        while (it != other.end()) {
-            this->push_front(*it++);
+        if ( isEmpty() )
+            el_1_ptr = el_n_ptr = new_ptr;
+        else
+        {
+            next_ptr = new_ptr;
+            el_n_ptr = new_ptr;
         }
-        sz = other.sz;
-        return *this;
     }
 
-    ~List() {
-        this->Clear();
-        delete main;
+    bool delFromFront (int & value)
+    {
+        if ( isEmpty() )
+            return false;
+        else
+        {
+            int *res_el_ptr = el_1_ptr;
+            if ( el_1_ptr == el_n_ptr )
+                el_1_ptr = el_n_ptr = 0;
+            else
+            {
+                el_1_ptr = next_ptr;
+                value = znach;
+                delete res_el_ptr;
+                return true;
+            }
+        }
+    }
+
+    bool delFromBack (int & value)
+    {
+        if ( isEmpty() )
+            return false;
+        else
+        {
+            int *res_el_ptr = el_n_ptr;
+            if ( el_1_ptr == el_n_ptr )
+                el_1_ptr = el_n_ptr = 0;
+            else
+            {
+                int *tek_el_ptr = el_1_ptr;
+                while (next_ptr != el_n_ptr)
+                    tek_el_ptr = next_ptr;
+                el_n_ptr = tek_el_ptr;
+                next_ptr = 0;
+            }           
+            value = znach;
+            delete res_el_ptr;
+            return true;
+        }
+    }
+
+    int *new_el (const int & value)
+    {
+        int v = value;
+        return &v;
+    }
+
+    bool isEmpty () const
+    {
+        return el_1_ptr == 0;
+    }
+
+    void print () const
+    {
+        if ( isEmpty() )
+        {
+            cout << "Spisok pust" << endl;
+            return;
+        }
+        int *tek_el_ptr = el_1_ptr;
+        cout << "Spisok sostoit iz: ";
+        while (tek_el_ptr != 0)
+        {
+            cout << *tek_el_ptr << ' ';
+            tek_el_ptr = next_ptr;
+        }
+        cout << endl;
+    }
+
+    ~List()
+    {
+        if (!isEmpty() )
+        {
+            cout << "Destroying nodes ..." << endl;
+            int *el_ptr = el_1_ptr;
+            int *res_el_ptr;
+            while (el_ptr != 0)
+            {
+                res_el_ptr = el_ptr;
+                cout << znach << endl;
+                el_ptr = next_ptr;
+                delete res_el_ptr;
+            }
+        }
+        cout<< "All nodes destroyed" <<endl;
     }
 };
