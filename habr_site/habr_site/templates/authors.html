@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-<h3>All authors</h3>
-	{% for post in all_authors %}
-	   <p><a href="{{ url_for('author', author=post.author) }}">{{ post.author }}</a></p>
-	{% endfor %}
-
-{% endblock %}

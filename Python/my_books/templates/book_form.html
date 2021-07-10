@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card edit">
+  <header class="card-header">
+    <p class="card-header-title">Books</p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      <form method="POST">
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input type="text" class="input" name="title" value="{{ title | default('')}}">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <input type="text" class="input" name="description" value="{{ description | default('')}}">
+          </div>
+        </div>
+          <div class="field">
+          <label class="label">Author</label>
+          <div class="control">
+            <div class="select">
+              <select name="author_id">
+                {% for author in authors %}
+                  <option value="{{ author.id }}" {{ 'selected' if author.id == author_id }}>{{author.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Category</label>
+          <div class="control">
+            <div class="select">
+              <select name="category_id">
+                {% for category in categories %}
+                  <option value="{{ category.id }}" {{ 'selected' if category.id == category_id }} >{{category.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <input type="submit" class="button is-link" value="Submit">
+          </div>
+          <div class="control">
+            <a class="button is-text" href="{{ url_for('books') }}">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

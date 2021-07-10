@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Book{% endblock %}
+
+{% block content %}
+	{% for one_book in books %}
+		{% if one_book.title == book %}
+     		<p>{{ one_book.title }}</p>
+     		<p>{{ one_book.author.name }}</p>
+     		<p>{{ one_book.description }}</p>
+
+     	{% endif %}
+    {% endfor %}
+{% endblock %}

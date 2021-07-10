@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ theme_title }}{% endblock %}
+
+{% block content %}
+	    {% for th in post_theme %}
+	    	{% if theme_st == th.theme|string() %}
+	    		<p><b>{{ th.title }}</b></p>
+	   			<p><i>{{ th.author }}</i></p>
+	   			<p><i>{{ th.tags }}</i></p>
+	   			<p>{{ th.body }}</p>
+	      	{% endif %}
+	    {% endfor %}
+{% endblock %}

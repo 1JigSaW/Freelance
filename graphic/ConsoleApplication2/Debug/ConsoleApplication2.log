@@ -1,5 +1,0 @@
-﻿  ConsoleApplication2.cpp
-D:\Freelance\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(4,9): fatal error C1083: Не удается открыть файл включение: graphics.h: No such file or directory,
-  Source.cpp
-D:\Freelance\ConsoleApplication2\ConsoleApplication2\Source.cpp(1,10): fatal error C1083: Не удается открыть файл включение: graphics.h: No such file or directory,
-  Создание кода...

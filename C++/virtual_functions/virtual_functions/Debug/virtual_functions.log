@@ -1,0 +1,8 @@
+﻿  virtual_functions.cpp
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(21,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(38,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(99,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(116,11): warning C4200: нестандартное расширение: массив нулевого размера в структуре (объединении)
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(116,11): message : Этот член будет пропущен конструктором, установленным по умолчанию, или оператором назначения копии или перемещения
+D:\Freelance\virtual_functions\virtual_functions\virtual_functions.cpp(130,27): warning C4018: <: несоответствие типов со знаком и без знака
+  virtual_functions.vcxproj -> D:\Freelance\virtual_functions\Debug\virtual_functions.exe

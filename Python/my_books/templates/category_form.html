@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card edit">
+  <header class="card-header">
+    <p class="card-header-title">Category</p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      <form method="POST">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input type="text" class="input" name="name" value="{{ name | default('')}}">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <input type="text" class="input" name="description" value="{{ description | default('')}}">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Book1</label>
+          <div class="control">
+            <input type="text" class="input" name="book1" value="{{ book1 | default('')}}">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Book2</label>
+          <div class="control">
+            <input type="text" class="input" name="book2" value="{{ book2 | default('')}}">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Book3</label>
+          <div class="control">
+            <input type="text" class="input" name="book3" value="{{ book3 | default('')}}">
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <input type="submit" class="button is-link" value="Submit">
+          </div>
+          <div class="control">
+            <a class="button is-text" href="{{ url_for('categories') }}">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
