@@ -1,0 +1,4 @@
+sandwich 500 1000
+hamburger 400 500
+pizza 600 2000
+tacos 700 1500
